@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
 
 
-const NewBook = () => {
+const NewBook = ({ onAddBook }) => {
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
     const [rating, setRating] = useState("");
@@ -37,6 +37,7 @@ const NewBook = () => {
             imageUrl
         };
         console.log(newBook);
+        onAddBook(newBook); //aca llamo a la funcion con el nuevo libro que va a llamar a la funcion del componente padre que esta asociada con la prop onAddBook
         setTitle("");
         setAuthor("");
         setPageCount("");

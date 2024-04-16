@@ -1,8 +1,9 @@
+import { useState } from "react";
 import Books from "./components/books/Books";
 import NewBook from "./components/newBook/NewBook";
 
 const App = () => {
-  const books = [
+  const [books, setBooks] = useState ([ //se inicializa un estado
     {
       bookTitle: "100 años de soledad",
       bookAuthor: "Gabriel García Marquez",
@@ -35,16 +36,21 @@ const App = () => {
       imageUrl:
         "https://prodimage.images-bn.com/pimages/9781728260839_p0_v2_s1200x630.jpg",
     },
-  ];
+  ]);
+  const addBook = (newBook) => {
+    setBooks([...books, newBook]);
+  };
 
   return (
     <div className="d-flex flex-column align-items-center">
       <h2>¡Bienvenidos a Books Champion!</h2>
       <p>¡Quiero leer libros!</p>
-      <NewBook />
+      <NewBook onAddBook={addBook} />
       <Books books={books} />
     </div>
   );
 };
 
 export default App;
+
+
